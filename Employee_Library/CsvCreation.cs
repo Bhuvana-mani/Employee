@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EmployeeLibrary
 {
-    class CsvCreation
+    public class CsvCreation
     {
         private readonly string _appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         private readonly string _applicationDirectory = "EmployeeManagement";
@@ -17,15 +17,12 @@ namespace EmployeeLibrary
         public CsvCreation()
         { 
 
-
-
-
-        var directory = Path.Combine(_appData, _applicationDirectory);
+            var directory = Path.Combine(_appData, _applicationDirectory);
                if (!Directory.Exists(directory))
                {
                    Directory.CreateDirectory(directory);
                }
-       path = Path.Combine(directory, _fileName);
+                  path = Path.Combine(directory, _fileName);
                if (!File.Exists(path))
                {
                    using (File.Create(path)) { }
@@ -35,7 +32,8 @@ namespace EmployeeLibrary
 
     List<string> fields = new List<string>();
 
-        List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();      
+        List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+        public static Dictionary<string, string> Employees = new Dictionary<string, string>();
         Dictionary<string, object> currentRow { get { return rows[rows.Count - 1]; } }
 
        
@@ -55,7 +53,19 @@ namespace EmployeeLibrary
             rows.Add(new Dictionary<string, object>());
         }
 
-       
+        public  string ExportUpdatedData()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            // The rows
+            foreach (var pair in Employees)
+            {
+                sb.Append(pair.Value);
+                sb.AppendLine();
+            }
+
+            return sb.ToString();
+        }
         string MakeValueCsvFriendly(object value)
         {
             if (value == null) return "";
@@ -117,13 +127,12 @@ namespace EmployeeLibrary
          } */
 
 
-           static void Main(string[] args)
+           public void Creation()
            {
 
                string _appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
               string _applicationDirectory = "EmployeeManagement";
             string _fileName = "EmployeeProject.csv";
-            string _path;
            
 
 
@@ -154,9 +163,10 @@ namespace EmployeeLibrary
                myExport["Privilege"] = "Employee";
                myExport["Email"] = "nandu@gmail.com";
 
-               string myCsv = myExport.Export();
+             //  string myCsv = myExport.Export();
                myExport.ExportToFile(path);
                byte[] myCsvData = myExport.ExportToBytes();
+            Console.WriteLine("Your file has been created");
                
            } 
 

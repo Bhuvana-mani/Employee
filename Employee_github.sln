@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLibrary", "Employee_Library\EmployeeLibrary.csproj", "{D63F0DDC-00C9-4F3F-B8FD-9495016032FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppMain", "ConsoleAppMain\ConsoleAppMain.csproj", "{6FDE2412-38AF-46C8-AC60-8E46C2D428A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminUI", "ConsoleAppMain\AdminUI.csproj", "{6FDE2412-38AF-46C8-AC60-8E46C2D428A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
