@@ -71,8 +71,7 @@ namespace EmployeeLibrary
             if (value == null) return "";
             
             string output = value.ToString();
-            /*if (output.Contains(",") || output.Contains("\""))
-                output = '"' + output.Replace("\"", "\"\"") + '"';*/
+            
             return output;
         }
         
@@ -81,12 +80,12 @@ namespace EmployeeLibrary
         {
             StringBuilder sb = new StringBuilder();
 
-            // The header
+            
             foreach (string field in fields)
                 sb.Append(field).Append(",");
             sb.AppendLine();
 
-            // The rows
+           
             foreach (Dictionary<string, object> row in rows)
             {
                 foreach (string field in fields)
@@ -106,33 +105,14 @@ namespace EmployeeLibrary
         {
             return Encoding.UTF8.GetBytes(Export());
         }
-        /* public void ReadtoDic()
-         {
-
-
-                 Dictionary<string, string> dictionary = new Dictionary<string, string>();
-                 using (var reader = new StreamReader(path))
-                 {
-                     while (!reader.EndOfStream)
-                     {
-                         var line = reader.ReadLine();
-                         if (line == null) continue;
-                         var values = line.Split(';');
-                         dictionary.Add(values[0], values[1]);
-                     }
-                 }
-
-
-
-         } */
-
+        
 
            public void Creation()
            {
 
-               string _appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-              string _applicationDirectory = "EmployeeManagement";
-            string _fileName = "EmployeeProject.csv";
+                 string _appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                 string _applicationDirectory = "EmployeeManagement";
+                 string _fileName = "EmployeeProject.csv";
            
 
 
@@ -162,8 +142,6 @@ namespace EmployeeLibrary
                myExport["Password"] = "nandu";
                myExport["Privilege"] = "Employee";
                myExport["Email"] = "nandu@gmail.com";
-
-             //  string myCsv = myExport.Export();
                myExport.ExportToFile(path);
                byte[] myCsvData = myExport.ExportToBytes();
             Console.WriteLine("Your file has been created");
